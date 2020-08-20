@@ -14,8 +14,8 @@ try:
     )
 
     cursor = connection.cursor()
-    table_name = "nlp_news_content"
-    min_max = "select min(id), max(id), count(id) from {} where id <= 8732219 ".format(table_name)
+    table_name = "nlp_news_region"
+    min_max = "select min(id), max(id), count(id) from {} where id <= 3407496 ".format(table_name)
     cursor.execute(min_max)
     result = cursor.fetchone()
     del_sql = "delete from " + table_name +" where id >= {} and id < {}"

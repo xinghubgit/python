@@ -54,6 +54,7 @@ def print_hi_tree_times():
     for i in range(3):
         print("Hi")
 
+# https://stackoverflow.com/questions/2846653/how-can-i-use-threading-in-python
 t1 = threading.Thread(target=print_hello_tree_times())
 t2 = threading.Thread(target=print_hi_tree_times())
 t1.start()

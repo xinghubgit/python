@@ -3,6 +3,7 @@ import datetime
 
 from mysql.connector import Error
 
+#pycharm
 
 try:
     connection = mysql.connector.connect(
@@ -13,10 +14,13 @@ try:
         database='news'
     )
 
+    start_day = datetime.date.today() - datetime.timedelta(days=30)
+
     cursor = connection.cursor()
-    table_name = "nlp_news_region"
-    min_max = "select min(id), max(id), count(id) from {} where id <= 3407496 ".format(table_name)
-    cursor.execute(min_max)
+    table_name = "nlp_news_feed"
+    min_max_sql = "select min(id), max(id), count(id) from {} where dt <= '{}' ".format(table_name, start_day)
+    print(min_max_sql)
+    cursor.execute(min_max_sql)
     result = cursor.fetchone()
     del_sql = "delete from " + table_name +" where id >= {} and id < {}"
 
